@@ -1,88 +1,111 @@
 # Coffee Sales Analysis
-This project analyzes coffee shop sales data to uncover insights about customer preferences, peak sales times, and revenue patterns. The analysis includes identifying best-selling products, peak hours, and monthly trends.
 
-## 1. Project Objective
-The goal of this project is to demonstrate data cleaning, exploratory data analysis (EDA), and insight generation using Python and real-world sales data.
+An exploratory analysis of coffee-shop transactions that examines product demand, revenue patterns, peak hours, weekday performance, and monthly trends.
 
-## 2. Tools & Libraries Used  
+## Project objective
 
-• Python (Pandas, Matplotlib, Seaborn, NumPy)  
+The project demonstrates data preparation, exploratory data analysis, aggregation, and visualization with Python. It answers the following questions:
 
-• Google Colab    
+- Which coffee has the highest number of transactions?
+- Which coffee generates the most revenue?
+- At what hour is revenue highest?
+- Which weekday and month perform best?
+- How is revenue distributed across morning, afternoon, and night?
 
-• Kaggle Dataset    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Source: [Coffee Sales Dataset by Navjot Kaushal on Kaggle](https://www.kaggle.com/datasets/navjotkaushal/coffee-sales-dataset)    
+## Tools and data
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Format: CSV  
+- Python
+- pandas, NumPy, Matplotlib, and Seaborn
+- Google Colab/Jupyter Notebook
+- [Coffee Sales Dataset by Navjot Kaushal on Kaggle](https://www.kaggle.com/datasets/navjotkaushal/coffee-sales-dataset)
 
-## 3. Dataset Structure
+The included CSV contains 3,547 transactions recorded from 1 March 2024 through 23 March 2025. It has 11 fields covering transaction value, coffee name, payment type, date, time, hour, weekday, month, and time of day.
 
-&nbsp;&nbsp;**Columns (features):**  
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• **hour_of_day:** The hour the transaction occurred (24-hour format).    
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• **cash_type:** The payment method used (all transactions in this dataset are 'card').    
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• **money:** The price of the item.    
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• **coffee_name:** The name of the menu item ordered.    
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• **Time_of_Day:** A categorical division of the day (Morning, Afternoon, Night).    
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• **Weekday:** The day of the week.    
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• **Month_name:** The name of the month.    
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• **Date:** The full date of the transaction.    
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• **Time:** The precise time of the transaction.    
+| Data-quality check | Result |
+|---|---:|
+| Rows | 3,547 |
+| Columns | 11 |
+| Missing values | 0 |
+| Duplicate rows | 0 |
+| Payment method | Card for all records |
 
- ## 4. Project Highlights  
+## Analysis workflow
 
-&nbsp;&nbsp;&nbsp;&nbsp;- **Top Coffee by Units Sold:** Americano with Milk Units sold: 809  
+1. Load and inspect the transaction data.
+2. Validate missing values, duplicates, and data types.
+3. Aggregate transaction count and revenue by coffee type.
+4. Summarize revenue by hour, weekday, month, and time of day.
+5. Visualize the main product and time-based patterns.
 
-&nbsp;&nbsp;&nbsp;&nbsp;- **Top Coffee by Revenue:** Latte  ,Revenue: $26,875 USD  
+## Results
 
-&nbsp;&nbsp;&nbsp;&nbsp;- **Peak sales hour:** 10:00 AM  ,Sales volume: $10,199 USD  
+| Metric | Result |
+|---|---:|
+| Total transaction value | 112,245.58 |
+| Number of transactions | 3,547 |
+| Average value per active day | 294.61 |
+| Top coffee by transaction count | Americano with Milk — 809 |
+| Top coffee by revenue | Latte — 26,875.30 |
+| Highest-revenue hour | 10:00 — 10,198.52 |
+| Highest-revenue weekday | Tuesday — 18,168.38 |
+| Highest-revenue month | March — 15,891.64 |
+| Highest-revenue time period | Night — 38,186.34 |
 
-&nbsp;&nbsp;&nbsp;&nbsp;- **Average daily sales:** $295 USD  
+The `money` field is treated as transaction value. The source files do not establish that it is denominated in US dollars, so the results are intentionally reported without a currency symbol.
 
-&nbsp;&nbsp;&nbsp;&nbsp;- **Total sales:** $112,246 USD  
+## Key findings
 
-&nbsp;&nbsp;&nbsp;&nbsp;- **Highest daily sales (weekday):** Tue  ,Revenue: $18,168 USD  
+- **Americano with Milk leads by volume**, with 809 transactions. This is the correct product to describe as the most frequently purchased coffee.
+- **Latte leads by revenue**, generating 26,875.30. High revenue does not mean it has the highest transaction count.
+- **10:00 is the strongest hour by revenue**, producing 10,198.52 across the observation period.
+- **Tuesday has the highest aggregated weekday revenue**, while March has the highest aggregated monthly revenue.
+- **Night records the highest time-of-day revenue**, but it is only slightly above Afternoon: 38,186.34 versus 38,130.04. This difference should not be treated as a large performance gap.
 
-&nbsp;&nbsp;&nbsp;&nbsp;- **Month with highest sales:** Mar  ,Revenue: $15,892 USD  
+These are descriptive findings from the available transactions. They do not by themselves establish seasonality or causality because the dataset covers an uneven portion of two calendar years and does not include store traffic, inventory availability, promotions, or product cost.
 
-&nbsp;&nbsp;&nbsp;&nbsp;- **Top Revenue Period:** Night  ,Total Sales: $38,186.34 USD  
+## Visualizations
 
+### Transactions by coffee type
 
-## **5. Data Story**  
+Americano with Milk has the highest transaction count.
 
-### Context    
-This dataset contains coffee shop sales transactions, including coffee types, transaction amounts, dates, and times. The goal is to understand customer preferences, peak sales hours, and revenue trends to optimize menu planning and marketing strategies.  
+<img width="992" height="590" alt="Transaction count by coffee type" src="https://github.com/user-attachments/assets/2e7cfc6b-8840-4f6e-8859-d0cfa05b540b" />
 
-### Insight  
-- **Top Coffee:** Latte is the best-selling coffee, generating the highest revenue.    
-- **Peak Hour:** 10:00 AM is the busiest time, indicating high morning demand.    
-- **Highest Monthly & Daily Sales:** March and Tuesdays show the most revenue, reflecting seasonal and weekly trends.    
-- **Revenue by Period:** Nighttime also contributes significantly to overall sales, showing a secondary peak.    
+### Revenue by month
 
-### Action  
-- Focus marketing campaigns on best-selling items like Latte to maximize revenue.    
-- Schedule staff to match peak hours, especially at 10:00 AM and evening periods.    
-- Plan promotions or inventory for March and Tuesdays to meet higher demand.    
-- Consider extending operational strategies for nighttime customers.    
+March has the highest aggregated revenue in the available data.
 
-## 6. Data Visualization    
-&nbsp;&nbsp;**• Top-selling Coffee (Bar chart)**  
-*Bar chart showing units sold by coffee type (Latte is the best seller)*    
+<img width="989" height="490" alt="Revenue by month" src="https://github.com/user-attachments/assets/dfc43644-9ab6-4c6c-837e-7d2ee1474356" />
 
-<img width="992" height="590" alt="image" src="https://github.com/user-attachments/assets/2e7cfc6b-8840-4f6e-8859-d0cfa05b540b" />
+### Revenue by hour
 
+10:00 has the highest aggregated hourly revenue.
 
+<img width="989" height="590" alt="Revenue by hour" src="https://github.com/user-attachments/assets/af809663-adda-4414-9d3d-87c319e0c934" />
 
+## Repository contents
 
-&nbsp;&nbsp;**• Monthly Sales Trend (Bar chart)**    
-*Bar chart showing revenue by month (March had the highest sales)*  
+```text
+.
+├── Coffee_Sales_Analysis.ipynb
+├── Coffe_sales.csv
+└── README.md
+```
 
-<img width="989" height="490" alt="image" src="https://github.com/user-attachments/assets/dfc43644-9ab6-4c6c-837e-7d2ee1474356" />
+## Run locally
 
+```bash
+pip install pandas numpy matplotlib seaborn jupyter
+jupyter notebook Coffee_Sales_Analysis.ipynb
+```
 
+Place `Coffe_sales.csv` in the same directory as the notebook, then update the data-loading cell if it still points to a Google Colab path.
 
-&nbsp;&nbsp;&nbsp;&nbsp;**• Sales by Hour (Bar chart)**    
-*Bar chart showing revenue by hour (10:00 AM is the peak)*  
+## Limitations and next steps
 
-<img width="989" height="590" alt="image" src="https://github.com/user-attachments/assets/af809663-adda-4414-9d3d-87c319e0c934" />
-
-
+- Confirm the currency and data-collection context with the original data owner before attaching a currency symbol to `money`.
+- Compare like-for-like months across complete years before making seasonal claims.
+- Add product cost to calculate gross profit rather than revenue alone.
+- Add transaction identifiers and store or machine identifiers if multiple sales locations are involved.
+- Convert the notebook's data path to a repository-relative path for reproducible local execution.
+- Confirm dataset redistribution rights before publishing the CSV.
