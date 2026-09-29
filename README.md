@@ -99,7 +99,7 @@ pip install pandas numpy matplotlib seaborn jupyter
 jupyter notebook Coffee_Sales_Analysis.ipynb
 ```
 
-Place `Coffe_sales.csv` in the same directory as the notebook, then update the data-loading cell if it still points to a Google Colab path.
+Place `Coffe_sales.csv` in the same directory as the notebook. The data-loading cell checks the repository directory first and then the Kaggle input directory.
 
 ## Limitations and next steps
 
@@ -107,5 +107,4 @@ Place `Coffe_sales.csv` in the same directory as the notebook, then update the d
 - Compare like-for-like months across complete years before making seasonal claims.
 - Add product cost to calculate gross profit rather than revenue alone.
 - Add transaction identifiers and store or machine identifiers if multiple sales locations are involved.
-- Convert the notebook's data path to a repository-relative path for reproducible local execution.
 - Confirm dataset redistribution rights before publishing the CSV.
